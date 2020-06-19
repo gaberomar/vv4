@@ -50,6 +50,48 @@ var sv = getParam("sv");
 		play(sv);
 			 }
 	</script>
+	<script>
+                    function switchPlayerState() {
+
+                        //var myPlayer = videojs("itwplayer");
+                        if (kwikMotion('player').paused())
+                            //myPlayer.play();
+                            kwikMotion('player').play();
+
+                        else
+                            //myPlayer.pause()
+                            kwikMotion('player').pause();
+
+                        $('.PauseAudioS').toggle();
+                        $('.PlayAudioS').toggle();
+                    }
+
+                    $(window).load(function () {
+                        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+                        var eventer = window[eventMethod];
+                        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+                        eventer(messageEvent, function (e) {
+                            var MyObj = e.data;
+                            Ontime1 = 0;
+                            //var MyParam1 = MyObj.substring(MyObj.indexOf("/") + 1);
+                            if (MyObj.indexOf("Play") > -1) {
+                                $('.PauseAudioS').toggle();
+                                $('.PlayAudioS').toggle();
+                            }
+
+                            if (MyObj.indexOf("Pause") > -1) {
+                                $('.PauseAudioS').toggle();
+                                $('.PlayAudioS').toggle();
+                            }
+
+                            if (MyObj.indexOf("Stop") > -1) {
+                                $('.PauseAudioS').toggle();
+                                $('.PlayAudioS').toggle();
+                            }
+
+                        }, false);
+                    });
+                </script>
 <div id="videojs">
 </div>
 <style>
