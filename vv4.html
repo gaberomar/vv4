@@ -55,31 +55,6 @@ var sv = getParam("sv");
 		height: 95% !important;
 	}
 </style>
-<script>
-
-			// save a reference to the video element
-			video = document.querySelector('video'),
-
-			// save a reference to the video.js player for that element
-			player = videojs(video);
-
-			// initialize the plugin with some custom options:
-			player.logobrand({
-				//height: "32px",
-				//width: "32px",
-				image: "http://www.videojs.com/img/logo.png",
-				destination: "http://www.videojs.com/"
-			});
-			//player.logobrand().loadImage("http://instasynch.com/images/youtube.png");
-			//player.logobrand().setDestination("http://instasynch.com/images/youtube.png");
-
-			document.getElementById("example").onclick = function(){
-				player.logobrand().loadImage("http://instasynch.com/images/logoNoBG.png");
-				player.logobrand().setDestination("http://instasynch.com");
-				this.innerHTML = "Image+destination changed!";
-			};
-		</script>
-
   <script>
             $(function() {
                var player = window.player = videojs('play');
