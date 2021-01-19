@@ -12,30 +12,58 @@ function getParam ( sname )
 var sv = getParam("sv");
 </script>
 	 </head>
+	 <style>
+                            .vjs-text-track-display div {color:#ffff00;font-size: 1.8em;}
+                            .vjs5-hola-skin .vjs-menu.vjs-rightclick-popup{display: none !important;}
+                            .vjs-menu > .vjs-menu-content:first-child > .vjs-menu-submenu:first-child > li:first-child{display: none !important;}
+                            .vjs-my-fancy-modal{text-align: center; z-index: 99999; background: black !important;}
+                            .vjs-my-fancy-modal .vjs-modal-dialog-content{font-size: 25px; font-weight: bold; padding-top: 250px;}
+                        </style>
 <body style="margin:0;background:#000;">
 <div id="iframeDiv" style="width: 100%;"> 
 <body onload="init()">
 <div id="player" style="background-color: #000;"></div>
 
-<script>
-    (function(){
-        window.hola_player({
-            player: "#player",
-            auto_play: true,
-            dvr: false,
-            muted: true,
-            controls: true,
-            share: false,
-            settings: true,
-            width: "100%",
-            height: "100%",
-            sources: [{
-                src: sv,
-                type: 'application/x-mpegurl'
-            }]
-        });
-    })();
-</script>
+ <script>
+                            var currTime = new Date().getTime();
+                            var currUrl = window.location.href;
+                            (function(){
+                                var player = window.hola_player({
+                                    player: "#player",
+                                    auto_play: true,
+                                    muted: true,
+                                    playsInline: true,
+                                    html5: true,
+                                    controls: true,
+                                    share: false,
+                                    width: "100%",
+                                    aspectRatio: "16:9",
+                                    poster: "resimler/214000/214277.jpg",
+                                    sources: [{
+                                        src: sv,
+                                        type: 'application/x-mpegurl'
+                                    }],
+                                    settings: true,
+                                                                            });
+
+                                player.vjs.on('error', function() {
+                                    $.ajax({
+                                        url: "https://geoip-db.com/jsonp",
+                                        jsonpCallback: "callback",
+                                        dataType: "jsonp",
+                                        success: function( location ) {
+                                            if(location.country_code != 'TR'){
+                                                var modal = player.vjs.createModal('Uluslararası müsabakalardaki telif kısıtlamaları nedeniyle Türkiye sınırları dışında izlenememektedir.');
+                                                modal.addClass('vjs-my-fancy-modal');
+                                            }
+                                        }
+                                    });
+                                    //var error = player.vjs.error();
+                                });
+                            })();
+                        </script>
+  <div class="video-source">
+              
 
 </body>
 </html>
