@@ -1,70 +1,68 @@
-﻿
-<html>
-<head>
-    <script type="text/javascript" src="https://cdn.pr.trt.com.tr/static/js/player/player.1.0.165.js"></script>
-<script> 
+<script>
 function getParam ( sname )
 {
- var params = location.search.substr(location.search.indexOf("?")+1);
- var sval =  params.replace("sv=", "");
- return sval;
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  
+  return sval;
 }
 var sv = getParam("sv");
+
 </script>
-	 </head>
-	 <style>
-                            .vjs-text-track-display div {color:#ffff00;font-size: 1.8em;}
-                            .vjs5-hola-skin .vjs-menu.vjs-rightclick-popup{display: none !important;}
-                            .vjs-menu > .vjs-menu-content:first-child > .vjs-menu-submenu:first-child > li:first-child{display: none !important;}
-                            .vjs-my-fancy-modal{text-align: center; z-index: 99999; background: black !important;}
-                            .vjs-my-fancy-modal .vjs-modal-dialog-content{font-size: 25px; font-weight: bold; padding-top: 250px;}
-                        </style>
-<body style="margin:0;background:#000;">
-<div id="iframeDiv" style="width: 100%;"> 
+<meta name="referrer" content="no-referrer">
+<style>html,body{margin:0;padding:0;background:#000;;}</style>
+<link href="http://101vn.com/s/videojs/video-js.min.css" rel="stylesheet">
+<script src="http://101vn.com/s/videojs/videojs-ie8.min.js"></script>
+<script src="http://101vn.com/s/videojs/video.js"></script>
+<script src="http://101vn.com/s/vjs-hls.min.js"></script>
 <body onload="init()">
-<div id="player" style="background-color: #000;"></div>
+<script>
 
- <script>
-                            var currTime = new Date().getTime();
-                            var currUrl = window.location.href;
-                            (function(){
-                                var player = window.hola_player({
-                                    player: "#player",
-                                    auto_play: true,
-                                    muted: true,
-                                    playsInline: true,
-                                    html5: true,
-                                    controls: true,
-                                    share: false,
-                                    width: "100%",
-                                    aspectRatio: "16:9",
-                                    poster: "resimler/214000/214277.jpg",
-                                    sources: [{
-                                        src: sv,
-                                        type: 'application/x-mpegurl'
-                                    }],
-                                    settings: true,
-                                                                            });
+ if (navigator.userAgent.match(/Android/i) ||  navigator.userAgent.match(/webOS/i) ||	 navigator.userAgent.match(/iPhone/i) ||     navigator.userAgent.match(/iPod/i) ||          navigator.userAgent.match(/iPad/i) ||		 navigator.userAgent.match(/Mobile Safari/i) ||            navigator.userAgent.match(/Blackberry/i)){
+	
+				document.write("\<video style=\"z-index:2;width:100%;height:100%px;background-color:#000;-o-object-fit:fill;object-fit:fill\"  controls=\"controls\" autoplay=\"true\" preload=\"auto\" height=\"auto\" src=\""+sv+"\"\>\<\/video\>");
+			 }else {
+				 
 
-                                player.vjs.on('error', function() {
-                                    $.ajax({
-                                        url: "https://geoip-db.com/jsonp",
-                                        jsonpCallback: "callback",
-                                        dataType: "jsonp",
-                                        success: function( location ) {
-                                            if(location.country_code != 'TR'){
-                                                var modal = player.vjs.createModal('Uluslararası müsabakalardaki telif kısıtlamaları nedeniyle Türkiye sınırları dışında izlenememektedir.');
-                                                modal.addClass('vjs-my-fancy-modal');
-                                            }
-                                        }
-                                    });
-                                    //var error = player.vjs.error();
-                                });
-                            })();
-                        </script>
-  <div class="video-source">
-              
+				 document.write('<video id="streaming" autoplay  preload="auto" height="100%" width="100%" class="video-js" controls data-setup="{&quot;language&quot;: &quot;vi&quot;}"></video>');
 
+		function play(cid) {
+
+
+				src = cid;
+			player = videojs("streaming");
+			player.ready(function() {
+				player.src({
+					src: src,
+					type: "application/x-mpegURL",
+					autoplay: "false",
+				});
+			});
+
+			//player.play();
+
+		}
+
+		play(sv);
+			 }
+	</script>
+<div id="videojs">
+</div>
+<style>
+	.video-js {
+		width: 100%;
+		height: 95%;
+	}
+	body {
+		text-align: center;
+		margin: 0px;
+	}
+	#videojs {
+		width: 100%;
+		height: 95%;
+	}.streaming-dimensions{
+				width: 100% !important;
+		height: 95% !important;
+	}
+</style>
 </body>
-</html>
-
