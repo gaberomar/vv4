@@ -66,6 +66,13 @@ var sv = getParam("sv");
 	    }, 2000)
 	}
 		
+     player.on(videojs.Events.PLAYER_STOP, playerStop);
+              function playerStop(){
+               location.reload();
+               } 
+
+       player.setVolume(100); // 1%
+               player.play();
 		
 	</script>
 
