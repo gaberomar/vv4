@@ -1,4 +1,10 @@
 
+<html><head>
+<style>html,body{margin:0;padding:0;background:#000;;}</style></head>
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>videojs play</title>
 
 <meta name="referrer" content="no-referrer">
 <link href="http://xemtiviviet.com/xtvcss/video-js.min.css" rel="stylesheet">
@@ -17,9 +23,21 @@ function getParam ( sname )
 var sv = getParam("sv");
 
 </script>
+<script type="text/javascript">
+function getParam ( sname )
+{
+  var params = location.search.substr(location.search.indexOf("?")+1);
+  var sval =  params.replace("sv=", "");
+  return sval;
+}
+var sv = getParam("sv");
+</script>
+</head>
 <body onload="init()">
-
-	<div id="videojs">
+<div style="width: 100%;">
+<div id="streaming"></div>
+</div>
+<div id="videojs">
 		<video id="streaming" autoplay preload="auto" height="100%" width="100%" class="video-js" controls data-setup='{"language": "vi"}'></video>
 	</div>
 	
@@ -67,7 +85,8 @@ var sv = getParam("sv");
 		
 		
 	</script>
-
+<div style='clear: both;'></div>
+<div class='no-items section' id='videojs play'></div> 
 <style>
 	.video-js {
 		width: 100%;
@@ -90,6 +109,7 @@ var sv = getParam("sv");
 <span style='position:absolute; bottom:40px!important; left: 10px!important; max-bottom: 10px!important; max-width: 170%!important; width: 22%!important; font-size: 13px; font-weight: bold;color: #ff0;'>
 <img style= 'left: 10px!important; max-height: 50px!important; max-width: 100%!important; width: 90%!important;' src='http://1.bp.blogspot.com/-6Utq5JU_l2w/YCAo8gB0x7I/AAAAAAAALZU/YJxOQHkvIywpU4znsCgYEvIsc-U8ijY1wCK4BGAYYCw/s1600/2.png'></span>
 
+</html>
 
 
 
