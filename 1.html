@@ -27,12 +27,10 @@ var sv = getParam("sv");
 	<div id="videojs">
 		<video id="streaming" autoplay preload="auto"  height="100%" width="100%" class="video-js" controls data-setup='{"language": "vi"}'></video>
 	</div>
-	
-	
+
 	<script>
+		 var i = 0;
 		function play(cid) {
-
-
 				src = cid;
 			player = videojs("streaming");
 			player.ready(function() {
