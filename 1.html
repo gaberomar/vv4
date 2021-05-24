@@ -22,7 +22,10 @@ var sv = getParam("sv");
  <script src="https://catiacast.video/Lib/minijes/player_packages/dist/catiacast_player.dev.js"></script>
 <body onload="init()">
 <div id="videojs">
-<video preload="auto" class="video-js vjs-default-skin" width="100%" height="100%" controls> </video>		
+<video id="play" class="video-js vjs-big-play-centered skin-blue" controls preload="none" width="100%" height="100%" data-setup="{}">
+    <!-- worning text if needed -->
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
 </div>
 <script>
     function play(link){
